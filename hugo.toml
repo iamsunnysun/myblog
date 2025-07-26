@@ -1,3 +1,4 @@
 baseURL = 'https://iamsunnysun.github.io/myblog/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
+theme = 'hugo-book'
