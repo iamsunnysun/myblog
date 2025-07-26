@@ -5,7 +5,7 @@
 here is some inline images
 {{< figure src="test.png" caption="My Test Image" >}}
 
-here is another image
+here is another image in native markdown format
 ![alt text](test.png)
 
 
