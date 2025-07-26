@@ -1,6 +1,0 @@
-baseURL = "https://iamsunnysun.github.io/myblog/"
-languageCode = "en-us"
-title = "My Hugo Blog"
-
-[permalinks]
-posts = "/posts/:slug/"
