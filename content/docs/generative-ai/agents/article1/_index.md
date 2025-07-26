@@ -11,6 +11,10 @@ here is another image
 
 ## My Math Post
 
+{{< katex display=true >}}
+f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+{{< /katex >}}
+
 Euler's identity is famous: $e^{i\pi} + 1 = 0$.
 
 And Einstein's formula:
