@@ -8,12 +8,6 @@ here is some inline images
 here is another image
 ![alt text](test.png)
 
-## try some math
-
-here is some math
-{{< katex display=true >}}
-f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-{{< /katex >}}
 
 ## My Math Post
 
@@ -52,17 +46,3 @@ System --> User : Success or failure
 @enduml
 ```
 
-## try diagram
-
-here is diagram
-
-{{< mermaid [class="..."] >}}
-stateDiagram-v2
-    State1: The state with a note
-    note right of State1
-        Important information! You can write
-        notes.
-    end note
-    State1 --> State2
-    note left of State2 : This is the note to the left.
-{{< /mermaid >}}
