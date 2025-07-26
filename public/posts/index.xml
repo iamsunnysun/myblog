@@ -6,7 +6,14 @@
     <description>Recent content in Posts on My New Hugo Site</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate></lastBuildDate>
+    <lastBuildDate>Sat, 26 Jul 2025 07:20:42 +0000</lastBuildDate>
     <atom:link href="https://iamsunnysun.github.io/myblog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First Post</title>
+      <link>https://iamsunnysun.github.io/myblog/posts/my-first-post/</link>
+      <pubDate>Sat, 26 Jul 2025 07:20:42 +0000</pubDate>
+      <guid>https://iamsunnysun.github.io/myblog/posts/my-first-post/</guid>
+      <description>&lt;p&gt;this is a test&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>
