@@ -2,10 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://iamsunnysun.github.io/myblob/categories/</loc>
+    <loc>https://example.org/</loc>
+    <lastmod>2025-07-26T07:20:42+00:00</lastmod>
   </url><url>
-    <loc>http://iamsunnysun.github.io/myblob/</loc>
+    <loc>https://example.org/posts/</loc>
+    <lastmod>2025-07-26T07:20:42+00:00</lastmod>
   </url><url>
-    <loc>http://iamsunnysun.github.io/myblob/tags/</loc>
+    <loc>https://example.org/categories/</loc>
+  </url><url>
+    <loc>https://example.org/tags/</loc>
   </url>
 </urlset>
