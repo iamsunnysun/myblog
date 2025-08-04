@@ -116,9 +116,7 @@ formance.
 - Then, the average performance score of seven LLM-based embedding models across datasets is calculated within each group.
 
 The result is shown as below:
-
-![alt text](image.png)
-
+![alt text](image-2.png)
 It can be observed that:
 - First, embedding models perform substantially worse on FinMTEB datasets compared to MTEB datasets, even after accounting for dataset complexity.
 - Second, embedding models perform worst on FinMTEB datasets with the highest complexity levels.
