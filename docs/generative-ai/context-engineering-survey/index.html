@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Context Engineering Survey
+  #
+
+This document is based on this paper (https://arxiv.org/pdf/2507.13334)
+
+  Taxonomy of Context Engineering
+  #
+
+
+Context Engineering Evolution Timeline:
+
+Conext includes the following components:
+
+$C_{instr}$: System instructions and rules (Context Retrieval and Generation).
+$C_{know}$: External knowledge, retrieved via functions like RAG or from integrated knowledge graphs (RAG; Context Processing).
+$C_{tools}$: Definitions and signatures of available external tools (Function Calling &amp; Tool-Integrated Reasoning).
+$C_{mem}$: Persistent information from prior interactions (Memory Systems; Context Management).
+$C_{state}$: The dynamic state of the user, world, or multi-agent system (Multi-Agent Systems &amp; Orchestration).
+$C_{query}$: The user’s immediate request
+
+Reference">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://iamsunnysun.github.io/myblog/docs/generative-ai/context-engineering-survey/">
+  <meta property="og:site_name" content="My Study Notes">
+  <meta property="og:title" content="My Study Notes">
+  <meta property="og:description" content="Context Engineering Survey # This document is based on this paper (https://arxiv.org/pdf/2507.13334)
+Taxonomy of Context Engineering # Context Engineering Evolution Timeline: Conext includes the following components:
+$C_{instr}$: System instructions and rules (Context Retrieval and Generation). $C_{know}$: External knowledge, retrieved via functions like RAG or from integrated knowledge graphs (RAG; Context Processing). $C_{tools}$: Definitions and signatures of available external tools (Function Calling &amp; Tool-Integrated Reasoning). $C_{mem}$: Persistent information from prior interactions (Memory Systems; Context Management). $C_{state}$: The dynamic state of the user, world, or multi-agent system (Multi-Agent Systems &amp; Orchestration). $C_{query}$: The user’s immediate request Reference">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>Context Engineering Survey | My Study Notes</title>
+<link rel="icon" href="/myblog/favicon.png" >
+<link rel="manifest" href="/myblog/manifest.json">
+<link rel="canonical" href="https://iamsunnysun.github.io/myblog/docs/generative-ai/context-engineering-survey/">
+<link rel="stylesheet" href="/myblog/book.min.d5e59cb0aa8d22a5813c62cd5e25d3d172489a369c61dc3f622ee96ae1ebb457.css" integrity="sha256-1eWcsKqNIqWBPGLNXiXT0XJImjacYdw/Yi7pauHrtFc=" crossorigin="anonymous">
+  <script defer src="/myblog/fuse.min.js"></script>
+  <script defer src="/myblog/en.search.min.36aeb848ee91030d85a92eeb0f6d3a9db0756ce2f03d0ab69a9adb56d73040ee.js" integrity="sha256-Nq64SO6RAw2FqS7rD206nbB1bOLwPQq2mprbVtcwQO4=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://iamsunnysun.github.io/myblog/docs/generative-ai/context-engineering-survey/index.xml" title="My Study Notes" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/myblog/"><span>My Study Notes</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/myblog/docs/deep-learning/" class="">Deep Learning</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/myblog/docs/generative-ai/" class="">Generative AI</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/myblog/docs/generative-ai/agents/article1/" class="">Article1</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/myblog/docs/generative-ai/agents/embedding-overview/" class="">Embedding Overview</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/myblog/docs/generative-ai/context-engineering-survey/" class="active">Context Engineering Survey</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/myblog/docs/generative-ai/context-engineering/" class="">Context Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/myblog/docs/machine-learning/" class="">Machine Learning</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/myblog/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/myblog/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Context Engineering Survey</h3>
+
+  <label for="toc-control">
+    
+    <img src="/myblog/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#taxonomy-of-context-engineering">Taxonomy of Context Engineering</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="context-engineering-survey">
+  Context Engineering Survey
+  <a class="anchor" href="#context-engineering-survey">#</a>
+</h1>
+<p>This document is based on this paper (<a href="https://arxiv.org/pdf/2507.13334">https://arxiv.org/pdf/2507.13334</a>)</p>
+<h2 id="taxonomy-of-context-engineering">
+  Taxonomy of Context Engineering
+  <a class="anchor" href="#taxonomy-of-context-engineering">#</a>
+</h2>
+<p><img src="image.png" alt="alt text" /></p>
+<p>Context Engineering Evolution Timeline:
+<img src="image-1.png" alt="alt text" /></p>
+<p>Conext includes the following components:</p>
+<ul>
+<li>$C_{instr}$: System instructions and rules (Context Retrieval and Generation).</li>
+<li>$C_{know}$: External knowledge, retrieved via functions like RAG or from integrated knowledge graphs (RAG; Context Processing).</li>
+<li>$C_{tools}$: Definitions and signatures of available external tools (Function Calling &amp; Tool-Integrated Reasoning).</li>
+<li>$C_{mem}$: Persistent information from prior interactions (Memory Systems; Context Management).</li>
+<li>$C_{state}$: The dynamic state of the user, world, or multi-agent system (Multi-Agent Systems &amp; Orchestration).</li>
+<li>$C_{query}$: The user’s immediate request</li>
+</ul>
+<p>Reference</p>
+<ul>
+<li><a href="https://github.com/Meirtz/Awesome-Context-Engineeringc">https://github.com/Meirtz/Awesome-Context-Engineeringc</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/myblog/docs/generative-ai/agents/embedding-overview/" class="flex align-center book-icon">
+        <img src="/myblog/svg/backward.svg" class="book-icon" alt="Previous" title="Embedding Overview" />
+        <span>Embedding Overview</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/myblog/docs/generative-ai/context-engineering/" class="flex align-center book-icon">
+        <span>Context Engineering</span>
+        <img src="/myblog/svg/forward.svg" class="book-icon" alt="Next" title="Context Engineering" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#taxonomy-of-context-engineering">Taxonomy of Context Engineering</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

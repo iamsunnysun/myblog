@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Embedding Models
+  #
+
+
+  Overview
+  #
+
+There are a large number of embedding models built in different time in history. As described in (Hongliu, 2024), there are 4 era:
+
+Count‑based (e.g. TF‑IDF, LSA)
+Static dense word embeddings (Word2Vec, GloVe, FastText)
+ontextualized embeddings (ELMo, GPT, BERT)
+Universal text embeddings – capable across varied tasks
+
+
+
+  Comparison of the Four Eras of Text Embeddings
+  #
+
+
+  
+      
+          Feature / Era
+          1. Count-Based
+          2. Static Word Embeddings
+          3. Contextualized Embeddings
+          4. Universal Text Embeddings
+      
+  
+  
+      
+          🔤 Unit of Representation
+          Word/Sentence
+          Word
+          Word
+          Sentence/Text
+      
+      
+          🧮 Vector Type
+          Sparse
+          Dense (fixed-size)
+          Dense (contextual)
+          Dense (general-purpose)
+      
+      
+          📚 Context Used
+          ❌ No
+          ⚠️ Local window
+          ✅ Full sentence
+          ✅ Full input
+      
+      
+          ⏳ Word Order Captured
+          ❌ No
+          ❌ No
+          ✅ Yes
+          ✅ Yes
+      
+      
+          🔄 Polysemy Support
+          ❌ No
+          ❌ No (same &ldquo;bank&rdquo;)
+          ✅ Yes
+          ✅ Yes
+      
+      
+          📊 Dimensionality
+          High (thousands)
+          Low (100–300)
+          Medium–High (768–2048)
+          Compact (256–1024)
+      
+      
+          ⚡ Inference Speed
+          ✅ Fast
+          ✅ Fast
+          ❌ Slower
+          ✅ Fast (post-training)
+      
+      
+          🧪 Typical Models
+          TF-IDF, LSA, LDA
+          Word2Vec, GloVe, FastText
+          ELMo, GPT, BERT
+          SimCSE, E5, BGE, Gecko
+      
+      
+          🧰 Best For
+          Simple baselines
+          Word similarity/analogy
+          Fine-tuned NLP tasks
+          Search, clustering, general NLP
+      
+      
+          📉 Weaknesses
+          No semantics
+          No context, no polysemy
+          Heavy computation
+          Still limited on logic/negation
+      
+  
+
+
+  Evaluation
+  #
+
+According to MTEB (Niklas at el, 2023), bmbedding models are evalulated in different tasks. There are 8 task categories and 56 datasets for different task categories.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://iamsunnysun.github.io/myblog/docs/generative-ai/agents/embedding-overview/">
+  <meta property="og:site_name" content="My Study Notes">
+  <meta property="og:title" content="My Study Notes">
+  <meta property="og:description" content="Embedding Models # Overview # There are a large number of embedding models built in different time in history. As described in (Hongliu, 2024), there are 4 era:
+Count‑based (e.g. TF‑IDF, LSA) Static dense word embeddings (Word2Vec, GloVe, FastText) ontextualized embeddings (ELMo, GPT, BERT) Universal text embeddings – capable across varied tasks Comparison of the Four Eras of Text Embeddings # Feature / Era 1. Count-Based 2. Static Word Embeddings 3. Contextualized Embeddings 4. Universal Text Embeddings 🔤 Unit of Representation Word/Sentence Word Word Sentence/Text 🧮 Vector Type Sparse Dense (fixed-size) Dense (contextual) Dense (general-purpose) 📚 Context Used ❌ No ⚠️ Local window ✅ Full sentence ✅ Full input ⏳ Word Order Captured ❌ No ❌ No ✅ Yes ✅ Yes 🔄 Polysemy Support ❌ No ❌ No (same “bank”) ✅ Yes ✅ Yes 📊 Dimensionality High (thousands) Low (100–300) Medium–High (768–2048) Compact (256–1024) ⚡ Inference Speed ✅ Fast ✅ Fast ❌ Slower ✅ Fast (post-training) 🧪 Typical Models TF-IDF, LSA, LDA Word2Vec, GloVe, FastText ELMo, GPT, BERT SimCSE, E5, BGE, Gecko 🧰 Best For Simple baselines Word similarity/analogy Fine-tuned NLP tasks Search, clustering, general NLP 📉 Weaknesses No semantics No context, no polysemy Heavy computation Still limited on logic/negation Evaluation # According to MTEB (Niklas at el, 2023), bmbedding models are evalulated in different tasks. There are 8 task categories and 56 datasets for different task categories.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>Embedding Overview | My Study Notes</title>
+<link rel="icon" href="/myblog/favicon.png" >
+<link rel="manifest" href="/myblog/manifest.json">
+<link rel="canonical" href="https://iamsunnysun.github.io/myblog/docs/generative-ai/agents/embedding-overview/">
+<link rel="stylesheet" href="/myblog/book.min.d5e59cb0aa8d22a5813c62cd5e25d3d172489a369c61dc3f622ee96ae1ebb457.css" integrity="sha256-1eWcsKqNIqWBPGLNXiXT0XJImjacYdw/Yi7pauHrtFc=" crossorigin="anonymous">
+  <script defer src="/myblog/fuse.min.js"></script>
+  <script defer src="/myblog/en.search.min.36aeb848ee91030d85a92eeb0f6d3a9db0756ce2f03d0ab69a9adb56d73040ee.js" integrity="sha256-Nq64SO6RAw2FqS7rD206nbB1bOLwPQq2mprbVtcwQO4=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://iamsunnysun.github.io/myblog/docs/generative-ai/agents/embedding-overview/index.xml" title="My Study Notes" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/myblog/"><span>My Study Notes</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/myblog/docs/deep-learning/" class="">Deep Learning</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/myblog/docs/generative-ai/" class="">Generative AI</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/myblog/docs/generative-ai/agents/article1/" class="">Article1</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/myblog/docs/generative-ai/agents/embedding-overview/" class="active">Embedding Overview</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/myblog/docs/generative-ai/context-engineering-survey/" class="">Context Engineering Survey</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/myblog/docs/generative-ai/context-engineering/" class="">Context Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/myblog/docs/machine-learning/" class="">Machine Learning</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/myblog/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/myblog/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Embedding Overview</h3>
+
+  <label for="toc-control">
+    
+    <img src="/myblog/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#comparison-of-the-four-eras-of-text-embeddings">Comparison of the Four Eras of Text Embeddings</a></li>
+    <li><a href="#evaluation">Evaluation</a>
+      <ul>
+        <li><a href="#finding">Finding</a></li>
+      </ul>
+    </li>
+    <li><a href="#domain-specific-embedding-model">Domain specific embedding model</a>
+      <ul>
+        <li><a href="#why-we-need-a-domain-specific-model">Why we need a domain specific model</a></li>
+        <li><a href="#quantified-result">Quantified result</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="embedding-models">
+  Embedding Models
+  <a class="anchor" href="#embedding-models">#</a>
+</h1>
+<h2 id="overview">
+  Overview
+  <a class="anchor" href="#overview">#</a>
+</h2>
+<p>There are a large number of embedding models built in different time in history. As described in (<a href="https://arxiv.org/pdf/2406.01607v1">Hongliu, 2024</a>), there are 4 era:</p>
+<ul>
+<li>Count‑based (e.g. TF‑IDF, LSA)</li>
+<li>Static dense word embeddings (Word2Vec, GloVe, FastText)</li>
+<li>ontextualized embeddings (ELMo, GPT, BERT)</li>
+<li>Universal text embeddings – capable across varied tasks</li>
+</ul>
+<p><img src="image.png" alt="alt text" /></p>
+<h2 id="comparison-of-the-four-eras-of-text-embeddings">
+  Comparison of the Four Eras of Text Embeddings
+  <a class="anchor" href="#comparison-of-the-four-eras-of-text-embeddings">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Feature / Era</th>
+          <th>1. Count-Based</th>
+          <th>2. Static Word Embeddings</th>
+          <th>3. Contextualized Embeddings</th>
+          <th>4. Universal Text Embeddings</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>🔤 Unit of Representation</td>
+          <td>Word/Sentence</td>
+          <td>Word</td>
+          <td>Word</td>
+          <td>Sentence/Text</td>
+      </tr>
+      <tr>
+          <td>🧮 Vector Type</td>
+          <td>Sparse</td>
+          <td>Dense (fixed-size)</td>
+          <td>Dense (contextual)</td>
+          <td>Dense (general-purpose)</td>
+      </tr>
+      <tr>
+          <td>📚 Context Used</td>
+          <td>❌ No</td>
+          <td>⚠️ Local window</td>
+          <td>✅ Full sentence</td>
+          <td>✅ Full input</td>
+      </tr>
+      <tr>
+          <td>⏳ Word Order Captured</td>
+          <td>❌ No</td>
+          <td>❌ No</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
+      </tr>
+      <tr>
+          <td>🔄 Polysemy Support</td>
+          <td>❌ No</td>
+          <td>❌ No (same &ldquo;bank&rdquo;)</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
+      </tr>
+      <tr>
+          <td>📊 Dimensionality</td>
+          <td>High (thousands)</td>
+          <td>Low (100–300)</td>
+          <td>Medium–High (768–2048)</td>
+          <td>Compact (256–1024)</td>
+      </tr>
+      <tr>
+          <td>⚡ Inference Speed</td>
+          <td>✅ Fast</td>
+          <td>✅ Fast</td>
+          <td>❌ Slower</td>
+          <td>✅ Fast (post-training)</td>
+      </tr>
+      <tr>
+          <td>🧪 Typical Models</td>
+          <td>TF-IDF, LSA, LDA</td>
+          <td>Word2Vec, GloVe, FastText</td>
+          <td>ELMo, GPT, BERT</td>
+          <td>SimCSE, E5, BGE, Gecko</td>
+      </tr>
+      <tr>
+          <td>🧰 Best For</td>
+          <td>Simple baselines</td>
+          <td>Word similarity/analogy</td>
+          <td>Fine-tuned NLP tasks</td>
+          <td>Search, clustering, general NLP</td>
+      </tr>
+      <tr>
+          <td>📉 Weaknesses</td>
+          <td>No semantics</td>
+          <td>No context, no polysemy</td>
+          <td>Heavy computation</td>
+          <td>Still limited on logic/negation</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="evaluation">
+  Evaluation
+  <a class="anchor" href="#evaluation">#</a>
+</h2>
+<p>According to MTEB (<a href="https://arxiv.org/pdf/2210.07316">Niklas at el, 2023</a>), bmbedding models are evalulated in different tasks. There are 8 task categories and 56 datasets for different task categories.</p>
+<p><img src="image-1.png" alt="alt text" /></p>
+<table>
+  <thead>
+      <tr>
+          <th>Task Type</th>
+          <th>What It Measures</th>
+          <th>Example Dataset</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Retrieval</strong></td>
+          <td>How well embeddings retrieve relevant docs</td>
+          <td>MS MARCO, BEIR</td>
+      </tr>
+      <tr>
+          <td><strong>Reranking</strong></td>
+          <td>Rank candidates by relevance</td>
+          <td>TREC-COVID, SciFact</td>
+      </tr>
+      <tr>
+          <td><strong>Clustering</strong></td>
+          <td>Group similar texts</td>
+          <td>Arxiv, StackExchange</td>
+      </tr>
+      <tr>
+          <td><strong>Classification</strong></td>
+          <td>Use embeddings for supervised tasks</td>
+          <td>Amazon Reviews</td>
+      </tr>
+      <tr>
+          <td><strong>STS (Similarity)</strong></td>
+          <td>How similar two texts are</td>
+          <td>STSBenchmark, SICK</td>
+      </tr>
+      <tr>
+          <td><strong>Pair Classification</strong></td>
+          <td>Textual entailment, semantic match</td>
+          <td>MRPC, PAWS</td>
+      </tr>
+      <tr>
+          <td><strong>Summarization</strong></td>
+          <td>Embedding-level summarization quality</td>
+          <td>XSum, Reddit TLDR</td>
+      </tr>
+      <tr>
+          <td><strong>Question Answering</strong></td>
+          <td>Open-domain QA via embedding search</td>
+          <td>NQ, HotpotQA</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="finding">
+  Finding
+  <a class="anchor" href="#finding">#</a>
+</h3>
+<ul>
+<li>Universal embedding models (e.g., E5, BGE, Gecko) generalize well across multiple MTEB tasks.</li>
+<li>Models like SimCSE are strong baselines, but newer approaches significantly outperform them, especially on retrieval and clustering.
+<ul>
+<li>Retrieval +100% or more (massive gains)</li>
+<li>Reranking +22–28%</li>
+<li>Clustering +35–57%</li>
+<li>Pair Classification +15–20%</li>
+<li>Gains on Semantic Textual Similarity (STS) more modest (~8%)</li>
+<li>Summarization tasks saw no real improvement over baseline</li>
+</ul>
+</li>
+<li>However, summarization and negation sensitivity remain weak spots.
+<ul>
+<li>Negation sensitivity: current embeddings poorly distinguish negated sentences (&ldquo;happy&rdquo; vs &ldquo;not happy&rdquo;). That issue is picked up in follow‑on work showing sub‑1% improvements in negation-aware benchmarks unless special training or reweighting is applied </li>
+<li>Multilingual / domain coverage: most models are English‑centric and evaluated on similar domains to training data (e.g. QA, Reddit)—thus generalization across diverse real‑world domains (finance, health, culture) is underexplored </li>
+<li>Summarization task gap: no top embedding beats SimCSE baseline</li>
+</ul>
+</li>
+</ul>
+<h2 id="domain-specific-embedding-model">
+  Domain specific embedding model
+  <a class="anchor" href="#domain-specific-embedding-model">#</a>
+</h2>
+<p>In this paper (<a href="https://arxiv.org/pdf/2409.18511v3">Yixuan et al, 2024</a>), author analysis why we need a domain specific model and proposed some dataset and benchmark for Finance.</p>
+<h3 id="why-we-need-a-domain-specific-model">
+  Why we need a domain specific model
+  <a class="anchor" href="#why-we-need-a-domain-specific-model">#</a>
+</h3>
+<p>In general there are following resons:</p>
+<ol>
+<li>
+<p>Specialized Vocabulary</p>
+<p>General models are trained on web-scale corpora (Wikipedia, Reddit, etc.). Domains like finance use terms like &ldquo;yield curve inversion,&rdquo; &ldquo;credit default swap,&rdquo; &ldquo;EBITDA&rdquo; — which general models rarely see or misinterpret.</p>
+<p>Example:
+A general model might equate “liquidity” with “fluid” rather than “available capital.”</p>
+</li>
+<li>
+<p>Different Semantics</p>
+<p>Words can mean different things depending on the context:</p>
+<ul>
+<li>“Margin” in finance (loan collateral)</li>
+<li>“Margin” in design (white space)</li>
+<li>“Operation” in math, medicine, or military</li>
+</ul>
+<p>Domain models learn the correct sense in context.</p>
+</li>
+<li>
+<p>Formal/Technical Language</p>
+<ul>
+<li>Sentences are often long, formal, and complex.</li>
+<li>Domain documents (e.g., financial reports, legal filings, scientific papers) include jargon and unusual syntax.</li>
+<li>General models are not trained to handle this effectively.</li>
+</ul>
+<p>The paper showed that ChatGPT&rsquo;s own error rate is higher on financial tasks compared to general ones — meaning even top-tier LLMs struggle.</p>
+</li>
+<li>
+<p>Domain-Specific Reasoning</p>
+<ul>
+<li>In finance, conclusions often depend on economic logic or quantitative reasoning (e.g., interpreting balance sheets).</li>
+<li>In medicine, models must connect symptoms, diagnoses, and treatments — general embeddings can&rsquo;t model this well without extra training.</li>
+</ul>
+</li>
+<li>
+<p>Empirical Evidence (from FinMTEB)</p>
+<ul>
+<li>General-purpose embeddings perform up to 100% worse on finance tasks vs general ones.</li>
+<li>There&rsquo;s no reliable correlation between model performance on MTEB (general) and FinMTEB (domain-specific).</li>
+<li>So, even top-ranked general models can&rsquo;t be trusted in domain applications without re-evaluation or adaptation.</li>
+</ul>
+</li>
+</ol>
+<h3 id="quantified-result">
+  Quantified result
+  <a class="anchor" href="#quantified-result">#</a>
+</h3>
+<p>There are some quantified result on how the general embedding model vs. domain specific embedding model.</p>
+<p>Four different index are proposed to measure data complexity.</p>
+<ul>
+<li><strong>ChatGPT Error Rate</strong>. The first measure quantifies how challenging it is for ChatGPT to answer a dataset’s questions.</li>
+<li><strong>Information Theory</strong>. We borrow the concept of information entropy from information theory to measure the complexity of a text sequence.</li>
+<li><strong>Readability</strong>. We also use readability to measure dataset complexity, specifically applying the Gunning Fog Index (Gunning, 1952), which factors in sentence length and the number of complex words</li>
+<li><strong>Mean Dependency Distance</strong>. Finally, we measure linguistic complexity using the dependency distance between two syntactically related words in a sentence (Oya, 2011). A longer dependency distance indicates that more context is needed for comprehension, reflecting greater sentence complexity.</li>
+</ul>
+<p>A subgroup analysis is conducted to examine the impact of the domain on embedding model per-
+formance.</p>
+<ul>
+<li>First, dataset complexity is calculated using one of the four complexity measures and categorize the datasets into three subgroups: low, medium, and high complexity. This ensures that METB and FinMTEB datasets within each subgroup have the same level of complexity.</li>
+<li>Then, the average performance score of seven LLM-based embedding models across datasets is calculated within each group.</li>
+</ul>
+<p>The result is shown as below:
+<img src="image-2.png" alt="alt text" />
+It can be observed that:</p>
+<ul>
+<li>First, embedding models perform substantially worse on FinMTEB datasets compared to MTEB datasets, even after accounting for dataset complexity.</li>
+<li>Second, embedding models perform worst on FinMTEB datasets with the highest complexity levels.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/myblog/docs/generative-ai/agents/article1/" class="flex align-center book-icon">
+        <img src="/myblog/svg/backward.svg" class="book-icon" alt="Previous" title="Article1" />
+        <span>Article1</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/myblog/docs/generative-ai/context-engineering-survey/" class="flex align-center book-icon">
+        <span>Context Engineering Survey</span>
+        <img src="/myblog/svg/forward.svg" class="book-icon" alt="Next" title="Context Engineering Survey" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#comparison-of-the-four-eras-of-text-embeddings">Comparison of the Four Eras of Text Embeddings</a></li>
+    <li><a href="#evaluation">Evaluation</a>
+      <ul>
+        <li><a href="#finding">Finding</a></li>
+      </ul>
+    </li>
+    <li><a href="#domain-specific-embedding-model">Domain specific embedding model</a>
+      <ul>
+        <li><a href="#why-we-need-a-domain-specific-model">Why we need a domain specific model</a></li>
+        <li><a href="#quantified-result">Quantified result</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

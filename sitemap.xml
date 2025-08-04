@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://iamsunnysun.github.io/myblog/docs/deep-learning/</loc>
+  </url><url>
+    <loc>https://iamsunnysun.github.io/myblog/docs/generative-ai/</loc>
+  </url><url>
+    <loc>https://iamsunnysun.github.io/myblog/docs/machine-learning/</loc>
+  </url><url>
+    <loc>https://iamsunnysun.github.io/myblog/posts/</loc>
+    <lastmod>2025-07-26T08:03:18+00:00</lastmod>
+  </url><url>
+    <loc>https://iamsunnysun.github.io/myblog/</loc>
+    <lastmod>2025-07-26T08:03:18+00:00</lastmod>
+  </url><url>
+    <loc>https://iamsunnysun.github.io/myblog/posts/my-second-post/</loc>
+    <lastmod>2025-07-26T08:03:18+00:00</lastmod>
+  </url><url>
+    <loc>https://iamsunnysun.github.io/myblog/posts/my-first-post/</loc>
+    <lastmod>2025-07-26T07:20:42+00:00</lastmod>
+  </url><url>
+    <loc>https://iamsunnysun.github.io/myblog/docs/generative-ai/agents/article1/</loc>
+  </url><url>
+    <loc>https://iamsunnysun.github.io/myblog/docs/generative-ai/agents/embedding-overview/</loc>
+  </url><url>
+    <loc>https://iamsunnysun.github.io/myblog/docs/generative-ai/context-engineering-survey/</loc>
+  </url><url>
+    <loc>https://iamsunnysun.github.io/myblog/docs/generative-ai/context-engineering/</loc>
+  </url><url>
+    <loc>https://iamsunnysun.github.io/myblog/categories/</loc>
+  </url><url>
+    <loc>https://iamsunnysun.github.io/myblog/docs/</loc>
+  </url><url>
+    <loc>https://iamsunnysun.github.io/myblog/tags/</loc>
+  </url>
+</urlset>
