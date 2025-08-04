@@ -1,4 +1,5 @@
 # Context Engineering Survey
+{{< katex />}}
 
 This document is based on this paper (https://arxiv.org/pdf/2507.13334)
 ## Taxonomy of Context Engineering

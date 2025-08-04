@@ -20,9 +20,7 @@ inline math symbol: $C_{query}$
 
 
 Euler's identity is famous: $e^{i\pi} + 1 = 0$
-Euler's identity is \(
-e^{i\pi} + 1 = 0
-\)
+Euler's identity is \(e^{i\pi} + 1 = 0\)
 
 Euler's identity is \[e^{i\pi} + 1 = 0\]
 
