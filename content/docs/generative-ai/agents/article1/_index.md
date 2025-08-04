@@ -15,7 +15,13 @@ here is another image in native markdown format
 f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
 {{< /katex >}}
 
-Euler's identity is famous: $e^{i\pi} + 1 = 0$.
+Euler's identity is famous: $ e^{i\pi} + 1 = 0 $.
+Euler's identity is \(
+e^{i\pi} + 1 = 0
+\)
+
+Euler's identity is \(e^{i\pi} + 1 = 0\)
+Euler's identity is \( e^{i\pi} + 1 = 0 \)
 
 And Einstein's formula:
 
