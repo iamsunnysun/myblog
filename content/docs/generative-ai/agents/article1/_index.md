@@ -3,9 +3,11 @@
 ## this document is an example.
 
 here is some inline images
+
 {{< figure src="test.png" caption="My Test Image" >}}
 
 here is another image in native markdown format
+
 ![alt text](test.png)
 
 
@@ -14,6 +16,9 @@ here is another image in native markdown format
 {{< katex display=true >}}
 f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
 {{< /katex >}}
+
+- $C_{query}$: The user’s immediate request
+
 
 Euler's identity is famous: $ e^{i\pi} + 1 = 0 $
 Euler's identity is famous: $e^{i\pi} + 1 = 0$
