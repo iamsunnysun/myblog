@@ -5,6 +5,7 @@ This document is based on this paper (https://arxiv.org/pdf/2507.13334)
 ![alt text](image.png)
 
 Context Engineering Evolution Timeline:
+
 ![alt text](image-1.png)
 
 Conext includes the following components:
