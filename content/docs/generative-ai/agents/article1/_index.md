@@ -14,6 +14,7 @@ here is another image in native markdown format
 ## My Math Post
 
 inline formular: {{< katex display=true >}} f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi {{< /katex >}}
+inline formular: {{< katex >}} f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi {{< /katex >}}
 
 inline math symbol: $C_{query}$ 
 
