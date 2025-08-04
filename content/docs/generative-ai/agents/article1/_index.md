@@ -1,5 +1,5 @@
 # Document 1
-
+{{< katex />}}
 ## this document is an example.
 
 here is some inline images
@@ -14,13 +14,14 @@ here is another image in native markdown format
 ## My Math Post
 
 inline formular: {{< katex display=true >}} f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi {{< /katex >}}
+
 inline formular: {{< katex >}} f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi {{< /katex >}}
 
 inline math symbol: $C_{query}$ 
 
-
 Euler's identity is famous: $e^{i\pi} + 1 = 0$
-Euler's identity is \(e^{i\pi} + 1 = 0\)
+
+Euler's identity is \\(e^{i\pi} + 1 = 0\\)
 
 Euler's identity is \[e^{i\pi} + 1 = 0\]
 
