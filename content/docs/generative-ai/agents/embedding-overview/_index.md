@@ -9,7 +9,7 @@ There are a large number of embedding models built in different time in history.
 
 ![alt text](image.png)
 
-## 🧠 Comparison of the Four Eras of Text Embeddings
+## Comparison of the Four Eras of Text Embeddings
 
 | Feature / Era           | 1. Count-Based       | 2. Static Word Embeddings | 3. Contextualized Embeddings | 4. Universal Text Embeddings |
 |-------------------------|----------------------|----------------------------|------------------------------|-------------------------------|
